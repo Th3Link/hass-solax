@@ -1,5 +1,5 @@
 """Constants for the solax integration."""
 
-DOMAIN = "solax"
+DOMAIN = "solaxultra"
 
-MANUFACTURER = "SolaX Power"
+MANUFACTURER = "SolaX Power X3 Ultra"
