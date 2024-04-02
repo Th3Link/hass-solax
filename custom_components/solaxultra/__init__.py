@@ -1,6 +1,6 @@
 """The solax component."""
 
-from solax import real_time_api
+from solaxbeta import real_time_api
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_IP_ADDRESS, CONF_PASSWORD, CONF_PORT, Platform

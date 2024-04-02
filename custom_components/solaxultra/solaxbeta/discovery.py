@@ -2,8 +2,8 @@ import asyncio
 import logging
 import typing
 
-from solax.inverter import Inverter, InverterError
-from solax.inverters import (
+from solaxbeta.inverter import Inverter, InverterError
+from solaxbeta.inverters import (
     QVOLTHYBG33P,
     X1,
     X3,

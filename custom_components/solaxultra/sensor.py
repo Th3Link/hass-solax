@@ -4,10 +4,15 @@ from __future__ import annotations
 
 import asyncio
 from datetime import timedelta
+import sys
+import re
+from solaxbeta import RealTimeAPI
+from solaxbeta.discovery import InverterError
+from solaxbeta.units import Units
 
-from solax import RealTimeAPI
-from solax.discovery import InverterError
-from solax.units import Units
+import logging
+
+_LOGGER = logging.getLogger(__name__)
 
 from homeassistant.components.sensor import (
     SensorDeviceClass,
@@ -48,7 +53,6 @@ SENSOR_DESCRIPTIONS: dict[tuple[Units, bool], SensorEntityDescription] = {
         key=f"{Units.KWH}_{False}",
         device_class=SensorDeviceClass.ENERGY,
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
-        state_class=SensorStateClass.MEASUREMENT,
     ),
     (Units.KWH, True): SensorEntityDescription(
         key=f"{Units.KWH}_{True}",
@@ -91,6 +95,12 @@ SENSOR_DESCRIPTIONS: dict[tuple[Units, bool], SensorEntityDescription] = {
     ),
 }
 
+def remove_special_characters(input_string):
+    # Use regular expression to remove non-alphanumeric characters
+    cleaned_string = re.sub(r'[^a-zA-Z0-9]', '', input_string)
+    # Convert all characters to lowercase
+    cleaned_string = cleaned_string.lower()
+    return cleaned_string
 
 async def async_setup_entry(
     hass: HomeAssistant,
@@ -104,7 +114,7 @@ async def async_setup_entry(
     version = resp.version
     endpoint = RealTimeDataEndpoint(hass, api)
     entry.async_create_background_task(
-        hass, endpoint.async_refresh(), f"solax {entry.title} initial refresh"
+        hass, endpoint.async_refresh(), f"solaxbeta {entry.title} initial refresh"
     )
     entry.async_on_unload(
         async_track_time_interval(hass, endpoint.async_refresh, SCAN_INTERVAL)
@@ -112,8 +122,7 @@ async def async_setup_entry(
     devices = []
     for sensor, (idx, measurement) in api.inverter.sensor_map().items():
         description = SENSOR_DESCRIPTIONS[(measurement.unit, measurement.is_monotonic)]
-
-        uid = f"{serial}-{idx}"
+        uid = f"{serial}-{idx}-{remove_special_characters(sensor)}"
         devices.append(
             Inverter(
                 api.inverter.manufacturer,

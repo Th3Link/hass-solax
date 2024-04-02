@@ -1,9 +1,9 @@
 import voluptuous as vol
 
-from solax import utils
-from solax.inverter import Inverter, InverterHttpClient, Method, ResponseParser
-from solax.units import Total, Units
-from solax.utils import div10, div100, to_signed
+from solaxbeta import utils
+from solaxbeta.inverter import Inverter, InverterHttpClient, Method, ResponseParser
+from solaxbeta.units import Total, Units
+from solaxbeta.utils import div10, div100, to_signed
 
 
 class X1Smart(Inverter):

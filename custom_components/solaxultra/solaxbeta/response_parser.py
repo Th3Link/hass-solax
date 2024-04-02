@@ -7,8 +7,8 @@ import voluptuous as vol
 from voluptuous import Invalid, MultipleInvalid
 from voluptuous.humanize import humanize_error
 
-from solax.units import SensorUnit
-from solax.utils import PackerBuilderResult
+from solaxbeta.units import SensorUnit
+from solaxbeta.utils import PackerBuilderResult
 
 _LOGGER = logging.getLogger(__name__)
 _LOGGER.setLevel(logging.INFO)

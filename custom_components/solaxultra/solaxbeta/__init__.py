@@ -5,8 +5,8 @@ import logging
 
 from async_timeout import timeout
 
-from solax.discovery import discover
-from solax.inverter import Inverter, InverterResponse
+from solaxbeta.discovery import discover
+from solaxbeta.inverter import Inverter, InverterResponse
 
 _LOGGER = logging.getLogger(__name__)
 

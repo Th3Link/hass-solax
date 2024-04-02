@@ -1,7 +1,7 @@
 import voluptuous as vol
 
-from solax.inverter import Inverter, InverterHttpClient, Method, ResponseParser
-from solax.units import Total, Units
+from solaxbeta.inverter import Inverter, InverterHttpClient, Method, ResponseParser
+from solaxbeta.units import Total, Units
 
 
 class XHybrid(Inverter):

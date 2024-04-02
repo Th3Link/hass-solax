@@ -5,6 +5,6 @@
   "config_flow": true,
   "documentation": "https://www.home-assistant.io/integrations/solax",
   "iot_class": "local_polling",
-  "requirements": ["aiohttp>=3.5.4","async_timeout>=4.0.2","voluptuous>=0.11.5"],
+  "requirements": ["solaxbeta @ git+https://github.com/Th3Link/solaxbeta.git@main"],
   "version": "2024.03.8"
 }

@@ -4,8 +4,8 @@ from __future__ import annotations
 import logging
 from typing import Any
 
-from solax import real_time_api
-from solax.discovery import DiscoveryError
+from solaxbeta import real_time_api
+from solaxbeta.discovery import DiscoveryError
 import voluptuous as vol
 
 from homeassistant import config_entries

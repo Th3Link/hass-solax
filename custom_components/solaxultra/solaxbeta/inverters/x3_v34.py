@@ -1,8 +1,8 @@
 import voluptuous as vol
 
-from solax.inverter import Inverter
-from solax.units import Total, Units
-from solax.utils import div10, div100, pack_u16, to_signed, twoway_div10, twoway_div100
+from solaxbeta.inverter import Inverter
+from solaxbeta.units import Total, Units
+from solaxbeta.utils import div10, div100, pack_u16, to_signed, twoway_div10, twoway_div100
 
 
 class X3V34(Inverter):
